@@ -3,11 +3,11 @@
 /* file.php?token=oGN3YTBuPizLa5Pwgx8ICvoNn3OqFVFKBOxtwchjs2a8z8vOdEqcUiLWsvjfz5j */
 
 /* security */
-$access_token = 'oGN3YTBuPizLa5Pwgx8ICvoNn3OqFVFKBOxtwchjs2a8z8vOdEqcUiLWsvjfz5j';
+$access_token = 'SelamatSoreDunia21';
 $access_ip = array('122.34.65.90');
 
 /* get user token and ip address */
-$client_token = $_GET['token'];
+$client_token = $_GET['HTTTP_X_GITLAB_TOKEN'];
 $client_ip = $_SERVER['REMOTE_ADDR'];
 
 /* create open log */
@@ -48,7 +48,7 @@ if ($branch === 'refs/heads/master')
 	fwrite($fs, '======================================================================='.PHP_EOL);
 	$fs and fclose($fs);
 	/* then pull master */
-	exec("/home/deploy/master_deploy.sh");
+	exec("/var/www/public_html/hook/master_deploy.sh");
 	} 
 else 
 	{
@@ -57,6 +57,6 @@ else
 	fwrite($fs, '======================================================================='.PHP_EOL);
 	$fs and fclose($fs);
 	/* pull devel branch */
-	exec("/home/deploy/devel_deploy.sh");
+	exec("/var/www/public_html/hook/devel_deploy.sh");
 	}
 ?>

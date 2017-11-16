@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/web/prod/www/
+cd /var/www/public_html/laziness/
 git checkout master
-git pull origin master >> /home/deploy/deploy.log
-echo "" >> /home/deploy/deploy.log
+git pull origin master >> /var/www/public_html/hook/deploy.log
+echo "done" >> /var/www/public_html/hook/deploy.log
