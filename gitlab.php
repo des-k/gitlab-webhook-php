@@ -4,14 +4,13 @@
 
 /* security */
 $access_token = 'SelamatSoreDunia21';
-$access_ip = array('122.34.65.90');
 
 /* get user token and ip address */
-$client_token = $_GET['HTTTP_X_GITLAB_TOKEN'];
+$client_token = $_SERVER['HTTP_X_GITLAB_TOKEN'];
 $client_ip = $_SERVER['REMOTE_ADDR'];
 
 /* create open log */
-$fs = fopen('./webhook.log', 'a');
+$fs = fopen('webhook.log', 'a');
 fwrite($fs, 'Request on ['.date("Y-m-d H:i:s").'] from ['.$client_ip.']'.PHP_EOL);
 
 /* test token */
@@ -21,14 +20,6 @@ if ($client_token !== $access_token)
     fwrite($fs, "Invalid token [{$client_token}]".PHP_EOL);
     exit(0);
 }
-
-/* test ip */
-if ( ! in_array($client_ip, $access_ip))
-	{
-    echo "error 503";
-    fwrite($fs, "Invalid ip [{$client_ip}]".PHP_EOL);
-    exit(0);
-	}
 
 /* get json data */
 $json = file_get_contents('php://input');
@@ -48,7 +39,9 @@ if ($branch === 'refs/heads/master')
 	fwrite($fs, '======================================================================='.PHP_EOL);
 	$fs and fclose($fs);
 	/* then pull master */
-	exec("/var/www/public_html/hook/master_deploy.sh");
+
+	echo 'doing master deploy';
+	exec("/var/www/public_html/hook/laziness/master_deploy.sh > /dev/null 2>/dev/null &");
 	} 
 else 
 	{
@@ -57,6 +50,7 @@ else
 	fwrite($fs, '======================================================================='.PHP_EOL);
 	$fs and fclose($fs);
 	/* pull devel branch */
-	exec("/var/www/public_html/hook/devel_deploy.sh");
+	echo 'doing develepment deploy';
+	exec("/var/www/public_html/hook/laziness/devel_deploy.sh > /dev/null 2>/dev/null &");
 	}
 ?>
