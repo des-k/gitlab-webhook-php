@@ -1,0 +1,20 @@
+Fri Nov 17 13:35:17 WIB 2017
+Updating 4813fb7..8aa3e67
+Fast-forward
+ readme.md | 2 ++
+ 1 file changed, 2 insertions(+)
+done
+Fri Nov 17 13:39:52 WIB 2017
+Updating 8aa3e67..4a37b61
+Fast-forward
+ app/Http/Controllers/AlertController.php           |  2 +-
+ app/Http/Controllers/ClientCrotroller.php          | 10 ++++-----
+ app/Http/Controllers/ExtendController.php          |  4 ++++
+ .../Controllers/PermissionSistemController.php     |  4 +++-
+ app/Http/Controllers/ScheduleController.php        |  3 ++-
+ app/Http/routes.php                                | 26 +++++-----------------
+ .../views/administrator/info_client.blade.php      | 18 +++++++--------
+ resources/views/alert/alert_reminder.blade.php     |  2 +-
+ .../views/setting/permission_setting.blade.php     |  2 +-
+ 9 files changed, 30 insertions(+), 41 deletions(-)
+done
