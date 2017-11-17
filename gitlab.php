@@ -3,7 +3,7 @@
 /* file.php?token=oGN3YTBuPizLa5Pwgx8ICvoNn3OqFVFKBOxtwchjs2a8z8vOdEqcUiLWsvjfz5j */
 
 /* security */
-$access_token = 'SelamatSoreDunia21';
+$access_token = 'SelamatSorePMS11';
 
 /* get user token and ip address */
 $client_token = $_SERVER['HTTP_X_GITLAB_TOKEN'];
@@ -41,7 +41,7 @@ if ($branch === 'refs/heads/master')
 	/* then pull master */
 
 	echo 'doing master deploy';
-	exec("/var/www/public_html/hook/laziness/master_deploy.sh > /dev/null 2>/dev/null &");
+	exec("/var/www/public_html/hook/pms_at/master_deploy.sh > /dev/null 2>/dev/null &");
 	} 
 else 
 	{
@@ -51,6 +51,6 @@ else
 	$fs and fclose($fs);
 	/* pull devel branch */
 	echo 'doing develepment deploy';
-	exec("/var/www/public_html/hook/laziness/devel_deploy.sh > /dev/null 2>/dev/null &");
+	exec("/var/www/public_html/hook/pms_at/devel_deploy.sh > /dev/null 2>/dev/null &");
 	}
 ?>
